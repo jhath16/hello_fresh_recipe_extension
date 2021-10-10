@@ -1,0 +1,18 @@
+{
+    "name": "HelloFresh Recipe Extension",
+    "description": "Build a grocery list by choosing recipes provided by HelloFresh's website.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "storage"
+    ],
+    "content_scripts": [
+        {
+          "matches": ["https://*.hellofresh.com/*"],
+          "js": ["content-script.js"]
+        }
+    ]
+  }
