@@ -12,6 +12,7 @@
     "content_scripts": [
         {
           "matches": ["https://*.hellofresh.com/recipes/*"],
+          "css": ["injected.css"],
           "js": ["content-script.js"]
         }
     ]

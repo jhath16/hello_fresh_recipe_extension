@@ -1,5 +1,10 @@
 // Add an element to the page that allows you to add recipes to list
-
+let newEl = document.createElement("div");
+newEl.className = "add-button-container";
+newEl.innerHTML = `
+    <div class="add-button">Add Recipe</div>
+`;
+document.body.appendChild(newEl);
 // Onclick of "add recipe", grab the ingredient info
 // Parse the ingredient info to the actual values
 
