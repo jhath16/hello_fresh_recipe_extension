@@ -1,3 +1,5 @@
+var convert = require('convert-units');
+
 // Add an element to the page that allows you to add recipes to list
 let newEl = document.createElement("div");
 newEl.className = "add-button-container";

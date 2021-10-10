@@ -1,0 +1,27 @@
+{
+  "name": "hello_fresh_recipe_extension",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "convert-units": "^2.3.4",
+    "webpack": "^5.58.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.9.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhath16/hello_fresh_recipe_extension.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhath16/hello_fresh_recipe_extension/issues"
+  },
+  "homepage": "https://github.com/jhath16/hello_fresh_recipe_extension#readme"
+}
