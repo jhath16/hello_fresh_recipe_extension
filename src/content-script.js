@@ -10,12 +10,11 @@ function getFromStorage (key) {
 }
 
 // Add an element to the page that allows you to add recipes to list
-let newEl = document.createElement("div");
-newEl.className = "add-button-container";
-newEl.innerHTML = `
-    <div class="add-button">Add Recipe</div>
-`;
-document.body.appendChild(newEl);
+
+let newEl = document.querySelector("[data-test-id='deliveryButton'").cloneNode(true);
+newEl.children[0].textContent = "Add to list";
+newEl.style.marginRight = "14px";
+document.querySelector(".dsw.dsjf.dsjg").prepend(newEl);
 
 // Initialize recipe object
 let recipe = {
