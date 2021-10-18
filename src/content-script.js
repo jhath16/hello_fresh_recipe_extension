@@ -16,29 +16,36 @@ function querySelectorIncludesText (selector, text){
       .find(el => el.textContent.includes(text));
 }
 
+function disableButton(el) {
+    el.classList.add('disabled');
+    el.textContent = "Added";
+}
+
 document.onreadystatechange = function (e) {
     if (document.readyState != "complete") return;
     // Add an element to the page that allows you to add recipes to list
-    // TODO: Add a separate button for when accessing page as a
-    // logged in user. Logged in users have different buttons than guest users
-    const deliveryButton = document.querySelector("[data-test-id='deliveryButton'");
-    let newEl = deliveryButton.cloneNode(true);
-    newEl.setAttribute("id", "add-button");
-    newEl.children[0].textContent = "Add to list";
-    newEl.style.marginRight = "14px";
-    deliveryButton.parentNode.prepend(newEl);
+    let overlayElement = document.createElement('div');
+    overlayElement.classList.add('overlay-menu');
+    overlayElement.innerHTML = `
+        <h5>Grocery List Generator</h5>
+        <button id='add-button' class='add-button'>Add to List</button>
+    `
+
+    let addButton = overlayElement.querySelector("#add-button");
+
+    document.body.append(overlayElement);
 
     let recipeKey = "recipe_" + window.location.pathname.replace('/recipes/', '');
     getFromStorage(recipeKey).then((recipe) => {
         if (Object.keys(recipe).length) {
-            newEl.classList.add('disabled');
+            disableButton(addButton);
         }
     })
 
     // Onclick of "add recipe", grab the ingredient info
-    newEl.addEventListener('click', (e) => {
-        if (e.currentTarget.classList.contains("disabled")) return; // not necessary technically but doesn't hurt
-        document.querySelector("#add-button").classList.add("disabled");
+    addButton.addEventListener('click', function(e) {
+        console.log(this);
+        disableButton(this);
         // Get metadata about recipe
         let recipeName = document.querySelector("[data-test-id='recipeDetailFragment.recipe-name']").textContent;
         let recipeSides = document.querySelector("[data-test-id='recipeDetailFragment.recipe-name']").nextSibling.textContent;
