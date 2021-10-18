@@ -1,0 +1,8 @@
+button.disabled,
+button.disabled:hover,
+button.disabled:focus  {
+  background-color: grey;
+  cursor: default;
+  border-color: grey;
+  box-shadow: none;
+}

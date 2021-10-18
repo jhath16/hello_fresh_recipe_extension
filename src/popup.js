@@ -1,13 +1,27 @@
 let convert = require("convert-units");
 let unitConversionMap = require("./unit-conversion-map");
 
+chrome.storage.local.get(null, function (items) {
+  let newList = document.createElement("ol");
+  for (key in items) {
+    recipe = items[key];
+    let item = document.createElement("li");
+    item.innerHTML = `
+      <div>
+        <h4>${recipe.name}</h4>
+        <h6>${recipe.sides}</h6>
+      </div>
+    `;
+    newList.append(item);
+  }
+  document.querySelector("#selectedRecipesOutput").append(newList);
+});
+
 document.getElementById("generateButton").addEventListener("click", function (event) {
   // For now, we will retrieve all of the data in the chrome storage for our extension.
   // In the future, we may need to refactor to place all recipes in a single object and retrieve the key another way
   // if we happen to generate any more keys (or we could just filter by "recipe-*" keys)
   chrome.storage.local.get(null, function (items) {
-    console.log(typeof items);
-    console.log(items);
     
     let output = {ingredients:[]};
 
@@ -28,12 +42,13 @@ document.getElementById("generateButton").addEventListener("click", function (ev
       });
     }
 
-    let newList = document.createElement("ul");   
+    let newList = document.createElement("ul");
     output.ingredients.forEach((i) => {
         let listItem = document.createElement("li");
         listItem.textContent = `${i.amount.number} ${i.amount.unit} ${i.name}`
         newList.append(listItem);
     });
-    document.getElementById("output").append(newList);
+    document.getElementById("groceryListOutput").append(newList);
   });
 });
+

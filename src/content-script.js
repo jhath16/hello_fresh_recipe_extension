@@ -23,12 +23,15 @@ document.onreadystatechange = function (e) {
     // logged in user. Logged in users have different buttons than guest users
     const deliveryButton = document.querySelector("[data-test-id='deliveryButton'");
     let newEl = deliveryButton.cloneNode(true);
+    newEl.setAttribute("id", "add-button");
     newEl.children[0].textContent = "Add to list";
     newEl.style.marginRight = "14px";
     deliveryButton.parentNode.prepend(newEl);
 
     // Onclick of "add recipe", grab the ingredient info
     newEl.addEventListener('click', (e) => {
+        if (e.currentTarget.classList.contains("disabled")) return; // not necessary technically but doesn't hurt
+        document.querySelector("#add-button").classList.add("disabled");
         // Get metadata about recipe
         let recipeName = document.querySelector("[data-test-id='recipeDetailFragment.recipe-name']").textContent;
         let recipeSides = document.querySelector("[data-test-id='recipeDetailFragment.recipe-name']").nextSibling.textContent;
