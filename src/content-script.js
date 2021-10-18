@@ -28,6 +28,13 @@ document.onreadystatechange = function (e) {
     newEl.style.marginRight = "14px";
     deliveryButton.parentNode.prepend(newEl);
 
+    let recipeKey = "recipe_" + window.location.pathname.replace('/recipes/', '');
+    getFromStorage(recipeKey).then((recipe) => {
+        if (Object.keys(recipe).length) {
+            newEl.classList.add('disabled');
+        }
+    })
+
     // Onclick of "add recipe", grab the ingredient info
     newEl.addEventListener('click', (e) => {
         if (e.currentTarget.classList.contains("disabled")) return; // not necessary technically but doesn't hurt
