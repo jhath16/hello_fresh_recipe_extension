@@ -1,4 +1,5 @@
-var convert = require('convert-units');
+let unitConversionMap = require('./unit-conversion-map');
+let fractionConversionMap = require("./fraction-conversion-map");
 
 // promisify GET'ing things from chrome.storage
 function getFromStorage (key) {
@@ -13,11 +14,13 @@ function getFromStorage (key) {
 function querySelectorIncludesText (selector, text){
     return Array.from(document.querySelectorAll(selector))
       .find(el => el.textContent.includes(text));
-  }
+}
 
 document.onreadystatechange = function (e) {
     if (document.readyState != "complete") return;
     // Add an element to the page that allows you to add recipes to list
+    // TODO: Add a separate button for when accessing page as a
+    // logged in user. Logged in users have different buttons than guest users
     const deliveryButton = document.querySelector("[data-test-id='deliveryButton'");
     let newEl = deliveryButton.cloneNode(true);
     newEl.children[0].textContent = "Add to list";
@@ -45,12 +48,15 @@ document.onreadystatechange = function (e) {
         let ingredientEls = document.querySelectorAll(".fela-_g6xips .fela-_1qz307e");
         for (let i = 0; i < ingredientEls.length; i++) {
             let el = ingredientEls[i];
-            let amount = el.children[0].textContent;
+            let [amountNumber, amountUnit] = el.children[0].textContent.split(" ");
             let ingredient = el.children[1].textContent;
     
             recipe.ingredients.push({
-                amount: amount,
-                ingredient: ingredient
+                amount: {
+                    number: Number(fractionConversionMap[amountNumber] || amountNumber),
+                    unit: unitConversionMap[amountUnit] || amountUnit
+                },
+                name: ingredient
             });
         }
         // Create unique key for all recipes so we do not overwrite them...

@@ -3,9 +3,8 @@ const path = require('path');
 module.exports = {
   watch: true,
   mode: 'production',
-  entry: './src/content-script.js',
-  output: {
-    filename: 'content-script.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
+  entry: {
+    contentScript: {import: './src/content-script.js', filename: "./content-script.js"},
+    popup: {import: './src/popup.js', filename: "./popup.js"}
+  }
 };
