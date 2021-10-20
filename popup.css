@@ -39,10 +39,6 @@ ul, ol {
     font-weight: bold;
 }
 
-.recipe-title {
-    margin-bottom: 4px;
-}
-
 .recipe-sub-menu {
     display: flex;
     justify-content: space-between;
