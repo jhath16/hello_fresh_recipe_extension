@@ -39,6 +39,10 @@ ul, ol {
     margin-bottom: 4px;
 }
 
+.recipe a {
+    color: inherit;
+}
+
 .button {
     padding: 4px 8px;
     display: inline-block;

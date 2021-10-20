@@ -9,7 +9,7 @@ chrome.storage.local.get(null, function (items) {
     item.innerHTML = `
       <div>
         <div class="recipe">
-          <h4>${recipe.name}</h4>
+          <h4><a href=${recipe.href} target="_blank">${recipe.name}</a></h4>
           <h6>${recipe.sides}</h6>
         </div>
         <div class="red button">Remove</div>

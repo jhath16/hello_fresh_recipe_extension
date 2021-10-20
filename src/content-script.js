@@ -51,6 +51,7 @@ document.onreadystatechange = function (e) {
         let recipeSides = document.querySelector("[data-test-id='recipeDetailFragment.recipe-name']").nextSibling.textContent;
         let recipeTime = document.querySelector("[data-translation-id='recipe-detail.preparation-time']").parentNode.nextSibling.textContent;
         let recipeDescription = document.querySelector("p").textContent; // this should always be the first p tag on page but may need to change
+        let recipeLink = window.location.href;
     
         // Initialize recipe object
         let recipe = {
@@ -58,6 +59,7 @@ document.onreadystatechange = function (e) {
             sides: recipeSides,
             time: recipeTime,
             description: recipeDescription,
+            href: recipeLink,
             ingredients: [],
         };
     
