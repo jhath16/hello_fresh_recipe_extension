@@ -8,10 +8,19 @@ chrome.storage.local.get(null, function (items) {
     let item = document.createElement("li");
     item.innerHTML = `
       <div>
-        <h4>${recipe.name}</h4>
-        <h6>${recipe.sides}</h6>
+        <div class="recipe">
+          <h4>${recipe.name}</h4>
+          <h6>${recipe.sides}</h6>
+        </div>
+        <div class="red button">Remove</div>
       </div>
     `;
+
+    item.querySelector(".red.button").addEventListener("click", function (e) {
+      chrome.storage.local.remove(key);
+      item.remove();
+    }); 
+
     newList.append(item);
   }
   document.querySelector("#selectedRecipesOutput").append(newList);

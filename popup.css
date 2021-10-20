@@ -24,6 +24,7 @@ h2, h4, h6 {
     display: inline-block;
     font-weight: bold;
     cursor: pointer;
+    margin-bottom: 4px;
 }
 
 .generate-button:hover {
@@ -32,4 +33,24 @@ h2, h4, h6 {
 
 ul, ol {
     padding-left: 1em; /* make sure this matches the padding set in body */
+}
+
+.recipe {
+    margin-bottom: 4px;
+}
+
+.button {
+    padding: 4px 8px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+  
+.red {
+    background: #E74C3C;
+    color: #ECF0F1;
+}
+
+.red:hover {
+    background: #C0392B;
 }
