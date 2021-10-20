@@ -56,9 +56,7 @@ document.onreadystatechange = function (e) {
         let recipeLink = window.location.href;
 
         // parse nutritional information
-        console.log(querySelectorIncludesText('span', 'Calories'));
         let calorieCount = querySelectorIncludesText('span', 'Calories').nextSibling.textContent.split(' ')[0];
-        console.log(calorieCount);
     
         // Initialize recipe object
         let recipe = {
@@ -92,7 +90,6 @@ document.onreadystatechange = function (e) {
         // Will we need to change the way these are stored if we are storign them by week?
     
         let key = "recipe_" + window.location.pathname.replace('/recipes/', '');
-        console.log(recipe);
         chrome.storage.local.set({[key]: recipe});
         // Add the recipe and ingredient list to our grocery list
         // (Probably going to need to use the storage API)
