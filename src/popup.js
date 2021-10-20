@@ -18,9 +18,10 @@ chrome.storage.local.get(null, function (items) {
         </div>
       </div>
     `;
-
+    
+    item.querySelector(".red.button").setAttribute("data-recipe-key", key);
     item.querySelector(".red.button").addEventListener("click", function (e) {
-      chrome.storage.local.remove(key);
+      chrome.storage.local.remove(this.getAttribute("data-recipe-key"));
       item.remove();
     }); 
 
