@@ -13,7 +13,7 @@ function getFromStorage (key) {
 // query dom by text content / tag name
 function querySelectorIncludesText (selector, text){
     return Array.from(document.querySelectorAll(selector))
-      .find(el => el.textContent.includes(text));
+      .find(el => el.textContent == text );
 }
 
 function disableButton(el) {
@@ -44,7 +44,6 @@ document.onreadystatechange = function (e) {
 
     // Onclick of "add recipe", grab the ingredient info
     addButton.addEventListener('click', function(e) {
-        console.log(this);
         disableButton(this);
         // Get metadata about recipe
         let recipeName = document.querySelector("[data-test-id='recipeDetailFragment.recipe-name']").textContent;
@@ -52,6 +51,11 @@ document.onreadystatechange = function (e) {
         let recipeTime = document.querySelector("[data-translation-id='recipe-detail.preparation-time']").parentNode.nextSibling.textContent;
         let recipeDescription = document.querySelector("p").textContent; // this should always be the first p tag on page but may need to change
         let recipeLink = window.location.href;
+
+        // parse nutritional information
+        console.log(querySelectorIncludesText('span', 'Calories'));
+        let calorieCount = querySelectorIncludesText('span', 'Calories').nextSibling.textContent.split(' ')[0];
+        console.log(calorieCount);
     
         // Initialize recipe object
         let recipe = {
@@ -60,6 +64,9 @@ document.onreadystatechange = function (e) {
             time: recipeTime,
             description: recipeDescription,
             href: recipeLink,
+            nutrition: {
+                calories: calorieCount
+            },
             ingredients: [],
         };
     

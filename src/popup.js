@@ -7,12 +7,15 @@ chrome.storage.local.get(null, function (items) {
     recipe = items[key];
     let item = document.createElement("li");
     item.innerHTML = `
-      <div>
-        <div class="recipe">
+      <div class="recipe-item">
+        <div class="recipe-title">
           <h4><a href=${recipe.href} target="_blank">${recipe.name}</a></h4>
           <h6>${recipe.sides}</h6>
         </div>
-        <div class="red button">Remove</div>
+        <div class="recipe-sub-menu">
+          <h6>${recipe.nutrition.calories} Cal | ${recipe.time}</h6>
+          <div class="red button">Remove</div>
+        </div>
       </div>
     `;
 

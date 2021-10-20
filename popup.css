@@ -35,11 +35,21 @@ ul, ol {
     padding-left: 1em; /* make sure this matches the padding set in body */
 }
 
-.recipe {
+.recipe-item {
+    font-weight: bold;
+}
+
+.recipe-title {
     margin-bottom: 4px;
 }
 
-.recipe a {
+.recipe-sub-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.recipe-title a {
     color: inherit;
 }
 
