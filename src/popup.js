@@ -60,7 +60,9 @@ document.getElementById("generateButton").addEventListener("click", function (ev
         listItem.textContent = `${i.amount.number} ${i.amount.unit} ${i.name}`
         newList.append(listItem);
     });
-    document.getElementById("groceryListOutput").append(newList);
+    const groceryOutputList = document.getElementById("groceryListOutput");
+    groceryOutputList.innerHTML = '';
+    groceryOutputList.append(newList);
   });
 });
 
