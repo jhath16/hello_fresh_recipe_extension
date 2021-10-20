@@ -1,6 +1,9 @@
 let unitConversionMap = require('./unit-conversion-map');
 let fractionConversionMap = require("./fraction-conversion-map");
 
+// don't run the script if we are not on a recipe page
+if (!/recipes\/.+/gi.test(window.location.pathname)) return false;
+
 // promisify GET'ing things from chrome.storage
 function getFromStorage (key) {
     return new Promise(function (resolve, reject) {
