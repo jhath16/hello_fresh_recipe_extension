@@ -72,7 +72,7 @@ document.onreadystatechange = function (e) {
         };
     
         // Parse the ingredient info to the actual values
-        let ingredientEls = document.querySelectorAll(".fela-_g6xips .fela-_1qz307e");
+        let ingredientEls = document.querySelectorAll(".fela-_g6xips .fela-_1qz307e"); // TODO: This seems fragile. Not sure how to make this better
         for (let i = 0; i < ingredientEls.length; i++) {
             let el = ingredientEls[i];
             let [amountNumber, amountUnit] = el.children[0].textContent.split(" ");
